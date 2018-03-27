@@ -14,6 +14,7 @@ public class ProductsListBean implements Serializable{
     private String name;
     private long price;
     private long idForDelete;
+    private Product editingProduct;
 
     public List<Product> getProducts(){
 //        return products;
@@ -44,10 +45,28 @@ public class ProductsListBean implements Serializable{
         this.idForDelete = idForDelete;
     }
 
+    public Product getEditingProduct() {
+        return editingProduct;
+    }
+
+    public void setEditingProduct(Product editingProduct) {
+        this.editingProduct = editingProduct;
+    }
+
     public Product createProduct(){
         return productsManagerBean.createProduct(name,price);
     }
     public void deleteProduct(){
         productsManagerBean.delete(idForDelete);
+    }
+
+    public String edit(Product product){
+        editingProduct = product;
+        setEditingProduct(editingProduct);
+        return "edit_product";
+    }
+    public String save(){
+        productsManagerBean.update(editingProduct);
+        return "products";
     }
 }
