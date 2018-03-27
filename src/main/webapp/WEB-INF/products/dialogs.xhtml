@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition>
+    <p:dialog id="approve_delete" widgetVar="approve_delete" header="Are you sure?">
+        <p:commandButton value="Delete" action="#{productsListBean.deleteProduct}" update="productsId"
+                         oncomplete="PF('approve_delete').hide()"/>
+        <p:commandButton value="Cancel" onclick="PF('approve_delete').hide()"/>
+    </p:dialog>
+</ui:composition>
+</html>

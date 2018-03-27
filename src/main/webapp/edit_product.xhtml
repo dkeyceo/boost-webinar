@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/template.xhtml">
+    <ui:define name="page_title">
+        Edit product
+    </ui:define>
+    <ui:define name="page_body">
+        <h:form>
+            <p:panel id="approve_edit" widgetVar="approve_edit">
+
+                <h:outputText for="product_name" value="Name"/>
+                <h:inputText id="product_name" value="#{productsListBean.editingProduct.name}"/>
+
+                <h:outputText for="product_price" value="Price"/>
+                <h:inputText id="product_price" value="#{productsListBean.editingProduct.price}"/>
+
+                <p:commandButton value="Save" action="#{productsListBean.save}"/>
+                <p:commandButton value="Cancel" onclick="window.location='products.xhtml'"/>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
