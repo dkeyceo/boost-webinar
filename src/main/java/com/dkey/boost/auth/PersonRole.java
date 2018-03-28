@@ -7,9 +7,9 @@ public class PersonRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Role role;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Person person;
 
     public long getId() {

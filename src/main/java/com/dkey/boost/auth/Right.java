@@ -9,9 +9,9 @@ public class Right {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Resource resource;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Role role;
 
     public long getId() {
