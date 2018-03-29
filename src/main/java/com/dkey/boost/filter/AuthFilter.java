@@ -27,7 +27,7 @@ public class AuthFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         if(!personBean.isAuthenticated()){
-            httpResponse.sendRedirect("login.xhtml");
+            httpResponse.sendRedirect(httpRequest.getContextPath()+"/login.xhtml");
             return;
         }
         String resource = httpRequest.getRequestURI();
