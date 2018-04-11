@@ -15,10 +15,10 @@
             <h:panelGrid columns="2" cellpadding="5">
 
                 <h:outputLabel for="username" value="Username:"/>
-                <p:inputText id="username" required="true" label="username"/>
+                <p:inputText id="username" required="true" label="username" value="#{personBean.login}"/>
                 <h:outputLabel for="password" value="Password:"/>
-                <p:password id="password" required="true" label="password"/>
-                <p:commandButton value="Login"/>
+                <p:password id="password" required="true" label="password" value="#{personBean.password}"/>
+                <p:commandButton value="Login" action="#{personBean.doLogin}"/>
 
             </h:panelGrid>
         </h:form>

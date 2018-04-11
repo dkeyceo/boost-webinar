@@ -1,6 +1,7 @@
 package com.dkey.boost.auth;
 
 import org.apache.commons.lang3.StringUtils;
+import sun.rmi.runtime.Log;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -9,8 +10,30 @@ import java.util.List;
 
 @Stateless
 public class AuthBean {
+    public enum LoginResult{
+        INCORRECT_LOGIN,
+        INCORRECT_PASSWORD,
+        SUCCESS
+    }
     @PersistenceContext
     private EntityManager entityManager;
+
+    public LoginResult doLogin(String login, String password){
+        if(StringUtils.isEmpty(login)){
+            return LoginResult.INCORRECT_LOGIN;
+        }
+        if(StringUtils.isEmpty(password)){
+            return LoginResult.INCORRECT_PASSWORD;
+        }
+        Person person = entityManager.find(Person.class,login);
+        if(person == null){
+            return LoginResult.INCORRECT_LOGIN;
+        }
+        if(!password.equals(person.getPassword())){
+            return LoginResult.INCORRECT_PASSWORD;
+        }
+        return LoginResult.SUCCESS;
+    }
     public boolean isGranted(String login, String resource){
         if(StringUtils.isEmpty(login)||StringUtils.isEmpty(resource)){
             return false;
