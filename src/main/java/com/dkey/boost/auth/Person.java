@@ -8,6 +8,8 @@ public class Person {
     @Id
     private String login;
     private String password;
+    private String name;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "person")
     private List<PersonRole> personRoles;
 
